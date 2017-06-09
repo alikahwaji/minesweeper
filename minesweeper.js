@@ -16,7 +16,12 @@ cells:[
 
 };
 
-function startGame () {
+function startGame (){
+var board.cells = documnet.getElementsByClassName('board')[0].childern;
+for (var i= 0 ; i < boradCells.length ; i++){
+  addListeners(childElements.item(i));
+  addCellToBoard(childElements.item(i));
+}
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
@@ -41,4 +46,12 @@ function checkForWin () {
 // It will return cell objects in an array. You should loop through
 // them, counting the number of times `cell.isMine` is true.
 function countSurroundingMines (cell) {
+var surroundingCells = getSurroundingCells(cell.row, cell.col)
+var count = 0;
+for (i=0 ; i < surroundingCells.length;i++){
+  if (surroundingCells[i].isMine){
+    count++
+  }
+}
+return count;
 }
